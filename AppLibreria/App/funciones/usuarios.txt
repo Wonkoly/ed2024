@@ -4,6 +4,69 @@
         "Nombre": "Diego ",
         "Apellido": "Maga\u00f1a",
         "Correo_Electronico": "Diegomag2996@gmail.com",
-        "Telefono": "3228892558"
+        "Telefono": "5557890456"
+    },
+    {
+        "ID_Usuario": 2,
+        "Nombre": "Maria",
+        "Apellido": "Hernandez",
+        "Correo_Electronico": "mhernandez@example.com",
+        "Telefono": "5551234567"
+    },
+    {
+        "ID_Usuario": 3,
+        "Nombre": "Juan",
+        "Apellido": "Garcia",
+        "Correo_Electronico": "jgarcia@example.com",
+        "Telefono": "5559876543"
+    },
+    {
+        "ID_Usuario": 4,
+        "Nombre": "Ana",
+        "Apellido": "Lopez",
+        "Correo_Electronico": "alopez@example.com",
+        "Telefono": "5558765432"
+    },
+    {
+        "ID_Usuario": 5,
+        "Nombre": "Pedro",
+        "Apellido": "Martinez",
+        "Correo_Electronico": "pmartinez@example.com",
+        "Telefono": "5552345678"
+    },
+    {
+        "ID_Usuario": 6,
+        "Nombre": "Luis",
+        "Apellido": "Perez",
+        "Correo_Electronico": "lperez@example.com",
+        "Telefono": "5553456789"
+    },
+    {
+        "ID_Usuario": 7,
+        "Nombre": "Carla",
+        "Apellido": "Sanchez",
+        "Correo_Electronico": "csanchez@example.com",
+        "Telefono": "5554567890"
+    },
+    {
+        "ID_Usuario": 8,
+        "Nombre": "Lucia",
+        "Apellido": "Ramirez",
+        "Correo_Electronico": "lramirez@example.com",
+        "Telefono": "5555678901"
+    },
+    {
+        "ID_Usuario": 9,
+        "Nombre": "Jorge",
+        "Apellido": "Gutierrez",
+        "Correo_Electronico": "jgutierrez@example.com",
+        "Telefono": "5556789012"
+    },
+    {
+        "ID_Usuario": 10,
+        "Nombre": "Rocio",
+        "Apellido": "Diaz",
+        "Correo_Electronico": "rdiaz@example.com",
+        "Telefono": "5557890123"
     }
 ]

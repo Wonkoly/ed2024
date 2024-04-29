@@ -1,5 +1,7 @@
 /* BARRA DE NAVEGACION */
+
 .barra {
+    
     background-color: #2c3e50; /* Azul oscuro */
     width: 100%;
     position: fixed;
@@ -42,20 +44,21 @@ main {
 }
 
 /* Estilos para la tabla de usuarios */
-.usuarios-table {
+.usuarios-table, 
+.prestamos-table {
     border-collapse: collapse;
     width: 90%; /* Ancho de la tabla */
     margin: 20px auto; /* Centrar la tabla y agregar margen */
 }
 
-.usuarios-table th,
-.usuarios-table td {
+th,
+td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
 }
 
-.usuarios-table th {
+th {
     background-color: #345ede; /* Azul */
     color: white;
 }
@@ -132,7 +135,7 @@ main {
 /* Estilos para el botón de agregar libro */
 .agregar-btn {
     padding: 12px 24px;
-    background-color: #345ede; /* Verde */
+    background-color: #345ede; /* Azul */
     color: white;
     border: none;
     border-radius: 5px;
@@ -143,7 +146,7 @@ main {
 }
 
 .agregar-btn:hover {
-    background-color: #345ede; /* Verde más oscuro al pasar el cursor */
+    background-color: #345ede; /* Azul más oscuro al pasar el cursor */
 }
 
 /* Estilos para el botón de agregar libro */
@@ -193,7 +196,7 @@ main {
 
 
 .agregar-submit:hover {
-    background-color: #345ede; /* Verde más oscuro al pasar el cursor */
+    background-color: #345ede; /* Azul más oscuro al pasar el cursor */
 }
 
 /* Estilos para el botón de cancelar */

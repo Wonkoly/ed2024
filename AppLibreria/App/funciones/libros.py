@@ -10,14 +10,21 @@ def librosPage():
         libros = json.load(file)
     return render_template('vistas/libros.html', libros=libros)
 
-#Busqueda de los libros
+# Búsqueda de los libros
 @librosBP.route('/buscar_libro', methods=['POST'])
 def buscar_libro():
     termino_busqueda = request.form['buscar'].lower()
     with open('App/funciones/libros.txt', 'r') as file:
         libros = json.load(file)
-    libros_encontrados = [libro for libro in libros if termino_busqueda in libro['Titulo'].lower()]
-    return render_template('vistas/libros.html', libros=libros_encontrados)
+    
+    libros_encontrados = [libro for libro in libros if termino_busqueda == libro['Titulo'].lower()]
+
+    if libros_encontrados:
+        libro_no_encontrado = False
+    else:
+        libro_no_encontrado = True
+
+    return render_template('vistas/libros.html', libros=libros_encontrados, libro_no_encontrado=libro_no_encontrado)
 
 #Crear o agregar un nuevo lirbo
 @librosBP.route('/agregar_libro', methods=['POST'])

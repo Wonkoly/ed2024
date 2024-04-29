@@ -1,9 +1,72 @@
 [
     {
         "Titulo": "El principito",
-        "Autor": "Gael Maga\u00f1a",
+        "Autor": "Gael Magana",
         "Editorial": "Sanpredrito",
         "ISBN": "31321654654",
         "Cantidad_Disponible": 1
+    },
+    {
+        "Titulo": "La Rosa Encantada",
+        "Autor": "Isabella Martinez",
+        "Editorial": "Ediciones Estelares",
+        "ISBN": "9788498389305",
+        "Cantidad_Disponible": 3
+    },
+    {
+        "Titulo": "El Viaje de Asteroide",
+        "Autor": "Alejandro Rojas",
+        "Editorial": "ViajeLiterario S.A.",
+        "ISBN": "9788417563726",
+        "Cantidad_Disponible": 5
+    },
+    {
+        "Titulo": "El Planeta del Pequeno Principe",
+        "Autor": "Elena Garcia",
+        "Editorial": "Luna Nueva",
+        "ISBN": "9788467135809",
+        "Cantidad_Disponible": 2
+    },
+    {
+        "Titulo": "La Estrella Perdida",
+        "Autor": "Javier Lopez",
+        "Editorial": "Estrella Editorial",
+        "ISBN": "9786077359462",
+        "Cantidad_Disponible": 0
+    },
+    {
+        "Titulo": "El Pequeno Astronauta",
+        "Autor": "Ana Gomez",
+        "Editorial": "Universo Editorial",
+        "ISBN": "9788423691848",
+        "Cantidad_Disponible": 4
+    },
+    {
+        "Titulo": "El Cometa Misterioso",
+        "Autor": "Daniel Fernandez",
+        "Editorial": "Nebulosa Press",
+        "ISBN": "9788467578143",
+        "Cantidad_Disponible": 1
+    },
+    {
+        "Titulo": "El Viaje Interplanetario",
+        "Autor": "Laura Martin",
+        "Editorial": "Planetario Ediciones",
+        "ISBN": "9788497999025",
+        "Cantidad_Disponible": 7
+    },
+    {
+        "Titulo": "El Planeta de las Maravillas",
+        "Autor": "Pablo Rodriguez",
+        "Editorial": "Maravillas Editores",
+        "ISBN": "9788420400305",
+        "Cantidad_Disponible": 2
+    },
+    {
+        "Titulo": "La Aventura Galactica",
+        "Autor": "Marta Garcia",
+        "Editorial": "Galaxia Impresa",
+        "ISBN": "9788416487360",
+        "Cantidad_Disponible": 3
     }
 ]
