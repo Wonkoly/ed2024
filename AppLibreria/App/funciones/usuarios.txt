@@ -1,0 +1,9 @@
+[
+    {
+        "ID_Usuario": 1,
+        "Nombre": "Diego ",
+        "Apellido": "Maga\u00f1a",
+        "Correo_Electronico": "Diegomag2996@gmail.com",
+        "Telefono": "3228892558"
+    }
+]

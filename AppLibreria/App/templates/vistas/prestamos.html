@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+   <h1>Listado de Préstamos</h1>
+
+   <table class="prestamos-table"> <!-- Aplica la clase prestamos-table a la tabla -->
+      <tr>
+         <th>ID Préstamo</th>
+         <th>Libro</th>
+         <th>Usuario</th>
+         <th>Fecha Préstamo</th>
+         <th>Fecha Devolución</th>
+      </tr>
+      {% for prestamo in prestamos %}
+         <tr>
+               <td>{{ prestamo.ID_Prestamo }}</td>
+               <td>{{ obtener_titulo_libro(prestamo.ID_Libro) }}</td>
+               <td>{{ obtener_nombre_usuario(prestamo.ID_Usuario) }}</td>
+               <td>{{ prestamo.Fecha_Prestamo }}</td>
+               <td>{{ prestamo.Fecha_Devolucion }}</td>
+         </tr>
+      {% endfor %}
+   </table>
+
+   <!-- Botón para desplegar formulario de préstamo -->
+   <button onclick="mostrarFormularioPrestamo()">Realizar Préstamo</button>
+
+   <!-- Formulario de préstamo oculto -->
+   <div id="form-prestamo" style="display: none;">
+      <h2>Realizar Préstamo</h2>
+      <form action="/realizar_prestamo" method="POST">
+         <label for="libro">Libro:</label>
+         <select id="libro" name="libro">
+               {% for libro in libros %}
+                  <option value="{{ libro.Titulo }}">{{ libro.Titulo }}</option>
+               {% endfor %}
+         </select><br>
+
+         <label for="usuario">Usuario:</label>
+         <select id="usuario" name="usuario">
+               {% for usuario in usuarios %}
+                  <option value="{{ usuario.ID_Usuario }}">{{ usuario.Nombre }} {{ usuario.Apellido }}</option>
+               {% endfor %}
+         </select><br>
+
+         <label for="fecha_prestamo">Fecha Préstamo:</label>
+         <input type="date" id="fecha_prestamo" name="fecha_prestamo" required><br>
+
+         <label for="fecha_devolucion">Fecha Devolución:</label>
+         <input type="date" id="fecha_devolucion" name="fecha_devolucion" required><br>
+
+         <input type="submit" value="Realizar Préstamo">
+         <button type="button" onclick="cancelarPrestamo()">Cancelar</button>
+      </form>
+   </div>
+
+   <script>
+      function mostrarFormularioPrestamo() {
+         document.getElementById('form-prestamo').style.display = 'block';
+      }
+
+      function cancelarPrestamo() {
+         document.getElementById('form-prestamo').style.display = 'none';
+      }
+   </script>
+{% endblock %}

@@ -1,0 +1,9 @@
+[
+    {
+        "Titulo": "El principito",
+        "Autor": "Gael Maga\u00f1a",
+        "Editorial": "Sanpredrito",
+        "ISBN": "31321654654",
+        "Cantidad_Disponible": 1
+    }
+]
