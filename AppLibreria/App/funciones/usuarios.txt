@@ -23,9 +23,9 @@
     {
         "ID_Usuario": 4,
         "Nombre": "Ana",
-        "Apellido": "Lopez",
+        "Apellido": "Lopez Guzman",
         "Correo_Electronico": "alopez@example.com",
-        "Telefono": "5558765432"
+        "Telefono": "5559876543"
     },
     {
         "ID_Usuario": 5,
@@ -68,5 +68,26 @@
         "Apellido": "Diaz",
         "Correo_Electronico": "rdiaz@example.com",
         "Telefono": "5557890123"
+    },
+    {
+        "ID_Usuario": 11,
+        "Nombre": "Luis",
+        "Apellido": "Hernandez Gutierrez",
+        "Correo_Electronico": "luisH@ccorreo.com",
+        "Telefono": "332548745"
+    },
+    {
+        "ID_Usuario": 12,
+        "Nombre": "Sergio Ignacio",
+        "Apellido": "Guerrero Diaz",
+        "Correo_Electronico": "sergio.d@correo.com",
+        "Telefono": "3354879652"
+    },
+    {
+        "ID_Usuario": 13,
+        "Nombre": "Fernando Gael",
+        "Apellido": "Hernandez Maga\u00f1a",
+        "Correo_Electronico": "gael.m@correo.com",
+        "Telefono": "3355689775"
     }
 ]

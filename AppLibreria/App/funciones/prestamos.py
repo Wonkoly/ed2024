@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, url_for
+from datetime import datetime
 import json
 
 from . import prestamosBP
@@ -13,42 +14,56 @@ def prestamosPage():
         usuarios = json.load(file)
     return render_template('vistas/prestamos.html', prestamos=prestamos, libros=libros, usuarios=usuarios)
 
-# Ruta para realizar un préstamo
-@prestamosBP.route('/realizar_prestamo', methods=['POST'])
+# Ruta para procesar un nuevo préstamo
+@prestamosBP.route('/prestamo', methods=['POST'])
 def realizar_prestamo():
-    libro = request.form['libro']
-    usuario_id = int(request.form['usuario'])
-    fecha_prestamo = request.form['fecha_prestamo']
-    fecha_devolucion = request.form['fecha_devolucion']
+    nom_libro = str(request.form['nom_libro'])
+    nom_usuario = str(request.form['nom_usuario'])
+    fecha_prestamo = datetime.now().strftime('%Y-%m-%d')
     
-    # Obtener datos del libro y usuario
-    with open('App/funciones/libros.txt', 'r') as file:
-        libros = json.load(file)
-    libro_id = None
-    for libro_info in libros:
-        if libro_info['Titulo'] == libro:
-            libro_id = libro_info['ID_Libro']
-            break
-    
-    # Crear el nuevo préstamo
     nuevo_prestamo = {
-        "ID_Prestamo": obtener_nuevo_id_prestamo(),  # Obtener un nuevo ID para el préstamo
-        "ID_Libro": libro_id,
-        "ID_Usuario": usuario_id,
+        "ID_Prestamo": obtener_nuevo_id_prestamo(),
+        "Titulo": nom_libro,
+        "ID_Usuario": nom_usuario,
         "Fecha_Prestamo": fecha_prestamo,
-        "Fecha_Devolucion": fecha_devolucion
+        "Fecha_Devolucion": ""
     }
     
-    # Guardar el nuevo préstamo en el archivo prestamos.txt
     with open('App/funciones/prestamos.txt', 'r') as file:
         prestamos = json.load(file)
     prestamos.append(nuevo_prestamo)
     with open('App/funciones/prestamos.txt', 'w') as file:
         json.dump(prestamos, file, indent=4)
-    
-    return redirect(url_for('prestamosPage'))
+    with open('App/funciones/libros.txt', 'r') as file:
+        libros = json.load(file)
+    with open('App/funciones/usuarios.txt', 'r') as file:
+        usuarios = json.load(file)
 
-# Función para obtener un nuevo ID para el préstamo
+    return render_template('vistas/prestamos.html', prestamos=prestamos, libros=libros, usuarios=usuarios)
+
+# Ruta para devolver un préstamo
+@prestamosBP.route('/devolucion', methods=['POST'])
+def devolver_prestamo():
+    id_prestamo = int(request.form['id_prestamo'])
+    fecha_devolucion = datetime.now().strftime('%Y-%m-%d')
+    
+    with open('App/funciones/prestamos.txt', 'r') as file:
+        prestamos = json.load(file)
+    for prestamo in prestamos:
+        if prestamo['ID_Prestamo'] == id_prestamo:
+            prestamo['Fecha_Devolucion'] = fecha_devolucion
+            break
+    
+    with open('App/funciones/prestamos.txt', 'w') as file:
+        json.dump(prestamos, file, indent=4)
+    with open('App/funciones/libros.txt', 'r') as file:
+        libros = json.load(file)
+    with open('App/funciones/usuarios.txt', 'r') as file:
+        usuarios = json.load(file)
+    
+    return render_template('vistas/prestamos.html', prestamos=prestamos, libros=libros, usuarios=usuarios)
+
+# Función para obtener un nuevo ID de préstamo
 def obtener_nuevo_id_prestamo():
     with open('App/funciones/prestamos.txt', 'r') as file:
         prestamos = json.load(file)
@@ -57,4 +72,3 @@ def obtener_nuevo_id_prestamo():
     else:
         ultimo_id = max(prestamos, key=lambda x: x['ID_Prestamo'])['ID_Prestamo']
         return ultimo_id + 1
-

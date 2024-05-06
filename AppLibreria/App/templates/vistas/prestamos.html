@@ -6,61 +6,68 @@
    <table class="prestamos-table"> <!-- Aplica la clase prestamos-table a la tabla -->
       <tr>
          <th>ID Préstamo</th>
-         <th>Libro</th>
+         <th>Nombre del Libro</th>
          <th>Usuario</th>
          <th>Fecha Préstamo</th>
          <th>Fecha Devolución</th>
+         <th>Acciones</th>
       </tr>
       {% for prestamo in prestamos %}
          <tr>
                <td>{{ prestamo.ID_Prestamo }}</td>
-               <td>{{ obtener_titulo_libro(prestamo.ID_Libro) }}</td>
-               <td>{{ obtener_nombre_usuario(prestamo.ID_Usuario) }}</td>
+               <td>{{ prestamo.Titulo }}</td>
+               <td>{{ prestamo.ID_Usuario }}</td>
                <td>{{ prestamo.Fecha_Prestamo }}</td>
                <td>{{ prestamo.Fecha_Devolucion }}</td>
+               <td>
+                  {% if prestamo.Fecha_Devolucion == "" %}
+                     <form action="/devolucion" method="POST">
+                           <input type="hidden" name="id_prestamo" value="{{ prestamo.ID_Prestamo }}">
+                           <input type="submit" value="Devolver" class="agregar-btn">
+                     </form>
+                  {% else %}
+                     Préstamo Devuelto
+                  {% endif %}
+               </td>
          </tr>
       {% endfor %}
    </table>
 
-   <!-- Botón para desplegar formulario de préstamo -->
-   <button onclick="mostrarFormularioPrestamo()" class="agregar-btn">Realizar Préstamo</button>
+   <!-- Botón para agregar nuevo préstamo -->
+   <button onclick="mostrarFormularioPrestamo()" class="agregar-submit">Agregar Nuevo Préstamo</button>
 
-   <!-- Formulario de préstamo oculto -->
-   <div id="form-prestamo" style="display: none;" class="buscar-libro-form">
-      <h2 class="titulo-principal">Realizar Préstamo</h2>
-      <form action="/realizar_prestamo" method="POST">
-         <label for="libro" class="formulario-label">Libro:</label>
-         <select id="libro" name="libro" class="formulario-input">
+   <div id="formulario-prestamo" style="display: none;" class="buscar-libro-form">
+      <form action="/prestamo" method="POST">
+         <h2>Agregar Nuevo Préstamo</h2><br>
+         <label for="nom_libros" class="formulario-label">Nombre del Libro:</label>
+         <input type="text" list="libros" id="nom_libro" name="nom_libro" class="formulario-input" required/><br>
+            <datalist id="libros">
                {% for libro in libros %}
-                  <option value="{{ libro.Titulo }}">{{ libro.Titulo }}</option>
+                  <option>{{ libro.Titulo }}</option>
                {% endfor %}
-         </select><br>
+            </datalist>
 
-         <label for="usuario" class="formulario-label">Usuario:</label>
-         <select id="usuario" name="usuario" class="formulario-input">
+         <label for="nom_usuarios" class="formulario-label">Nombre de Usuario:</label>
+         <input type="text" list="usuarios" id="nom_usuario" name="nom_usuario" class="formulario-input" required/>
+            <datalist id="usuarios">
                {% for usuario in usuarios %}
-                  <option value="{{ usuario.ID_Usuario }}">{{ usuario.Nombre }} {{ usuario.Apellido }}</option>
+                  <option>{{ usuario.Nombre }}</option>
                {% endfor %}
-         </select><br>
+            </datalist>
 
-         <label for="fecha_prestamo" class="formulario-label">Fecha Préstamo:</label>
-         <input type="date" id="fecha_prestamo" name="fecha_prestamo" required class="formulario-input"><br>
-
-         <label for="fecha_devolucion" class="formulario-label">Fecha Devolución:</label>
-         <input type="date" id="fecha_devolucion" name="fecha_devolucion" required class="formulario-input"><br>
-
-         <input type="submit" value="Realizar Préstamo" class="agregar-submit">
+         <input type="submit" value="Prestar" class="agregar-submit">
          <button type="button" onclick="cancelarPrestamo()" class="cancelar-btn">Cancelar</button>
       </form>
    </div>
 
+
    <script>
       function mostrarFormularioPrestamo() {
-         document.getElementById('form-prestamo').style.display = 'block';
+         document.getElementById('formulario-prestamo').style.display = 'block';
       }
 
       function cancelarPrestamo() {
-         document.getElementById('form-prestamo').style.display = 'none';
+         document.getElementById('formulario-prestamo').style.display = 'none';
       }
    </script>
 {% endblock %}

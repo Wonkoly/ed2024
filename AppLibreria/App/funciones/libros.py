@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request
 import json
 
 from . import librosBP
@@ -16,7 +16,8 @@ def buscar_libro():
     termino_busqueda = request.form['buscar'].lower()
     with open('App/funciones/libros.txt', 'r') as file:
         libros = json.load(file)
-    
+
+    #  
     libros_encontrados = [libro for libro in libros if termino_busqueda == libro['Titulo'].lower()]
 
     if libros_encontrados:
