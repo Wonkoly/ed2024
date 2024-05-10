@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Listas</h1>
+<section>
+    <h2>Lista de Elementos</h2>
+    <form method="POST" action="/act_listas">
+        <input type="text" name="elemento" placeholder="Ingrese un elemento">
+        <button type="submit">Agregar</button>
+    </form>
+    <ol>
+        {% for item in elementos %}
+            <li>{{ item }} <a href="/eliminar/{{ loop.index0 }}">Eliminar</a></li>
+        {% endfor %}
+    </ol>   
+</section>
+{% endblock %}

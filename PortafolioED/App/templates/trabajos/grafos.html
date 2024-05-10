@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Grafos</h1> 
+<section>
+    <h2>Calculadora de Grafos</h2>
+    <div class="form-container">
+        {% if error_message %}
+            <div class="error-message">{{ error_message }}</div>
+        {% endif %}
+        <form method="POST" action="/">
+            <textarea name="matriz" id="matriz" placeholder="Ingrese la matriz de adyacencia..." required></textarea>
+            <br>
+            <button type="submit">Generar Grafo</button>
+        </form>
+        {% if imagen_encoded %}
+            <img src="data:image/png;base64,{{ imagen_encoded }}" alt="Grafo">
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

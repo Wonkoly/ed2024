@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Conjuntos</h1>
+<section>
+    <div class="container">
+        <h2>Operaciones con Conjuntos</h2>
+        <form method="POST" action="/act_conjuntos">
+            <label for="conjunto_a">Conjunto A (números separados por comas):</label>
+            <input type="text" name="conjunto_a" id="conjunto_a" required>
+            <br><br>
+            <label for="conjunto_b">Conjunto B (números separados por comas):</label>
+            <input type="text" name="conjunto_b" id="conjunto_b" required>
+            <br><br>
+            <label for="operacion">Seleccione la operación:</label>
+            <select name="operacion" id="operacion">
+                <option value="union">Unión</option>
+                <option value="interseccion">Intersección</option>
+                <option value="diferencia">Diferencia</option>
+                <option value="pertenencia">Pertenencia</option>
+            </select>
+            <br><br>
+            {% if error %}
+                <div class="error">{{ error }}</div>
+                <br>
+            {% endif %}
+            {% if resultado %}
+                <div class="resultado">Resultado: {{ resultado }}</div>
+                <br>
+            {% endif %}
+            {% if operacion == 'pertenencia' %}
+                <label for="elemento">Ingrese un elemento para verificar pertenencia:</label>
+                <input type="text" name="elemento" id="elemento" required>
+                <br><br>
+            {% endif %}
+            <button type="submit">Realizar Operación</button>
+        </form>
+    </div>
+</section>
+    
+{% endblock %}

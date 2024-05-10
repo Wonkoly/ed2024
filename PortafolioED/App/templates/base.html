@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ed2024</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% include 'componentes/header.html' %}
+    <main>
+        {% block contenido %}
+        {% endblock %}
+    </main>
+</body>
+</html>

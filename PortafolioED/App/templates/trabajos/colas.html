@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Colas</h1> 
+<section>
+    <h2>Cola de Pedidos</h2>
+    <form method="POST" action="/act_colas">
+        <label for="pedido">Seleccione un plato:</label>
+        <select name="pedido" id="pedido">
+            {% for key, value in menu.items() %}
+                <option value="{{ key }}">{{ value }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+        <button type="submit">Realizar Pedido</button>
+    </form>
+    <ol>
+        {% for pedido in pedidos %}
+            <li>{{ pedido }}</li>
+        {% endfor %}
+    </ol>
+    <form method="POST" action="/servir_pedido">
+        <button type="submit">Servir Pedido</button>
+    </form>
+
+</section>
+{% endblock %} 

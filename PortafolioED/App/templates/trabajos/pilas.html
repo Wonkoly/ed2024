@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Pilas</h1>
+<section>   
+    <h2>Lista de Tareas</h2>
+    <form action="/delete_tasks" method="post">
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <input type="checkbox" name="selected_tasks" value="{{ loop.index0 }}">
+                <strong>{{ task.name }}</strong> - {{ task.description }} - {{ task.start_date }} {% if task.end_date %} - {{ task.end_date }} {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Eliminar tareas seleccionadas</button>
+    </form>
+    <form action="/add_task" method="post">
+        <input type="text" name="task_name" placeholder="Nombre de la tarea" required>
+        <input type="text" name="description" placeholder="Descripción">
+        <input type="date" name="end_date" placeholder="Fecha de finalización">
+        <button type="submit">Agregar tarea</button>
+    </form>
+</section>
+{% endblock %}

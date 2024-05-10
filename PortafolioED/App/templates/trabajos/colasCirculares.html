@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Colas Circulares</h1>
+<section>
+    <h2>Cola de Turnos</h2>
+    <form method="POST" action="/act_colascirculares">
+        <label for="nombre">Nombre del paciente:</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+        <button type="submit">Solicitar Turno</button>
+    </form>
+    <h3>Turnos en Espera</h3>
+    <ul>
+        {% for turno in turnos %}
+            <li>{{ turno }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Pacientes Atendidos</h3>
+    <ul>
+        {% for atendido in atendidos %}
+            <li>{{ atendido }}</li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="/atender_turno">
+        <button type="submit">Atender Siguiente Turno</button>
+    </form>
+</section>
+{% endblock %}

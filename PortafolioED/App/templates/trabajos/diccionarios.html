@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Diccionario</h1>
+<section>
+    <h2>Registro de Usuarios</h2>
+    <div class="usuarios-container">
+        {% for usuario in usuarios %}
+            <div class="usuario-card">
+                <button class="eliminar-btn" onclick="eliminarUsuario({{ usuario['id'] }})">Eliminar</button>
+                <h3>{{ usuario['nombre'] }}</h3>
+                <p>Email: {{ usuario['email'] }}</p>
+            </div>
+        {% endfor %}
+        <div class="usuario-card">
+            <h3>Agregar Nuevo Usuario</h3>
+            <form method="POST" action="/act_diccionarios">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" required>
+                <br><br>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+                <br><br>
+                <button type="submit">Agregar Usuario</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function eliminarUsuario(usuarioId) {
+            if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+                window.location.href = '/eliminar_usuario/' + usuarioId;
+            }
+        }
+    </script>
+</section>
+{% endblock %}

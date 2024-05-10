@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividad Arboles</h1>
+<section>
+    <h2>Árbol de Directorios y Archivos</h2>
+    <form method="POST" action="/act_arboles">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
+        <label for="tipo">Tipo:</label>
+        <select name="tipo" id="tipo">
+            <option value="directorio">Directorio</option>
+            <option value="archivo">Archivo</option>
+        </select>
+        <button type="submit">Agregar</button>
+    </form>
+    <ul class="tree">
+        {% for nodo in arbol.hijos %}
+            <li>
+                <span class="{{ 'folder' if nodo.tipo == 'directorio' else 'file' }}">{{ nodo.nombre }}</span>
+                {% if nodo.tipo == 'directorio' %}
+                    <ul class="tree">
+                        {% for hijo in nodo.hijos %}
+                            <li>
+                                <span class="{{ 'folder' if hijo.tipo == 'directorio' else 'file' }}">{{ hijo.nombre }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

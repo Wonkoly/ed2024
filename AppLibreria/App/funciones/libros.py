@@ -37,8 +37,10 @@ def agregar_libro():
         "ISBN": request.form['isbn'],
         "Cantidad_Disponible": int(request.form['cantidad'])
     }
+    print(type(nuevo_libro))
     with open('App/funciones/libros.txt', 'r') as file:
         libros = json.load(file)
+        print(type(libros))
     libros.append(nuevo_libro)
     with open('App/funciones/libros.txt', 'w') as file:
         json.dump(libros, file, indent=4)
@@ -50,6 +52,7 @@ def eliminar_libro():
     id_libro = request.form['id_libro']
     with open('App/funciones/libros.txt', 'r') as file:
         libros = json.load(file)
+    # Agarra el ID del libro a eliminar y en la lista itera y pasa todos los libros menos el del id a rellenar
     libros = [libro for libro in libros if libro['Titulo'] != id_libro]
     with open('App/funciones/libros.txt', 'w') as file:
         json.dump(libros, file, indent=4)
