@@ -8,7 +8,7 @@
         {% if error_message %}
             <div class="error-message">{{ error_message }}</div>
         {% endif %}
-        <form method="POST" action="/">
+        <form method="POST" action="/act_grafos">
             <textarea name="matriz" id="matriz" placeholder="Ingrese la matriz de adyacencia..." required></textarea>
             <br>
             <button type="submit">Generar Grafo</button>
