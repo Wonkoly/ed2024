@@ -1,7 +1,7 @@
 ## Instalación
 Nota: Es importante aclarar que este repositorio cuenta con dos proyectos juntos los dos elaborados con Flask asi que la instalacion sera similar.
 
-Primero, has `cd` en el proyecto a desplegar y activa el entorno virtual en de Python. Es de aclarar que si te encuentras en Windows de preferencia usa Git Bash.
+Primero, has `cd` en el proyecto a desplegar y activa el entorno virtual `venv` de Python. Es de aclarar que si te encuentras en Windows de preferencia usa Git Bash.
 
 ```bash
 cd
